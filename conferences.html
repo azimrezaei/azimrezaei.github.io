@@ -92,7 +92,7 @@
 //   confirmed: true  -> date taken from a published call for papers
 //   confirmed: false -> projected from the previous cycle
 //   due: null        -> venue announced conference dates but no deadline yet
-var VERIFIED = "2026-10-15";
+var VERIFIED = "2026-10-16";
 
 var VENUES = [
   // ---------- confirmed ----------
@@ -107,26 +107,28 @@ var VENUES = [
   { name: "CVPR 2027", cat: "vision", due: "2026-11-16", conf: "2027-06-20",
     where: "Seattle, WA, USA", confirmed: true,
     url: "https://cvpr.thecvf.com/Conferences/2027/CallForPapers" },
-  { name: "ICWM 2027", cat: "vision", due: "2026-12-01", conf: "2027-01-01",
-    where: "San Francisco Bay Area, USA · dates TBA", confirmed: true,
-    url: "https://worldmodelconference.org/" },
+  { name: "ICWM 2027", cat: "vision", due: "2026-11-30", conf: "2027-05-01",
+    where: "San Francisco Bay Area, USA · late May", confirmed: false,
+    url: "https://icwm.cc/" },
   { name: "RSS 2027", cat: "robotics", due: "2026-12-05", conf: "2027-07-06",
     where: "Athens, Greece · stage 1 abstract", confirmed: true,
     url: "https://roboticsconference.org/" },
   { name: "ICAPS 2027", cat: "ml", due: "2026-12-15", conf: "2027-06-27",
     where: "Columbia, SC, USA", confirmed: true, url: "https://www.icaps-conference.org/" },
   { name: "NAACL 2027", cat: "nlp", due: "2026-12-24", conf: "2027-06-01",
-    where: "San Francisco, CA, USA · via ARR", confirmed: true, url: "https://naacl.org/" },
-  { name: "COLING 2027", cat: "nlp", due: "2026-12-24", conf: "2027-05-09",
-    where: "Macau SAR, China · via ARR", confirmed: true, url: "https://lrec-coling-2027.org/" },
+    where: "San Francisco, CA, USA · ARR commitment", confirmed: true, url: "https://naacl.org/" },
+  { name: "COLING 2027", cat: "nlp", due: "2026-12-23", conf: "2027-05-09",
+    where: "Macau SAR, China · ARR commitment", confirmed: true,
+    url: "https://2027.coling-iccl.org/" },
   { name: "ACL 2027", cat: "nlp", due: "2027-01-05", conf: "2027-08-17",
-    where: "Kyoto, Japan · via ARR", confirmed: true, url: "https://www.aclweb.org/" },
-  { name: "ICWSM 2027", cat: "ml", due: "2027-01-16", conf: "2027-06-01",
-    where: "Edinburgh, Scotland · dates TBA", confirmed: true, url: "https://www.icwsm.org/" },
+    where: "Kyoto, Japan · ARR submission", confirmed: true, url: "https://www.aclweb.org/" },
+  { name: "ICWSM 2027", cat: "ml", due: "2027-01-15", conf: null,
+    where: "Edinburgh, Scotland · round 3", confirmed: true,
+    url: "https://www.icwsm.org/2027/" },
   { name: "SIGIR 2027", cat: "ml", due: "2027-01-22", conf: "2027-07-18",
     where: "San Jose, CA, USA", confirmed: true, url: "https://sigir.org/" },
   { name: "ICMR 2027", cat: "vision", due: "2027-02-01", conf: "2027-06-07",
-    where: "Singapore", confirmed: true, url: "https://www.sigmm.org/conferences/icmr" },
+    where: "Singapore", confirmed: false, url: "https://sigmm.org/" },
   { name: "InterSpeech 2027", cat: "nlp", due: "2027-02-09", conf: "2027-08-29",
     where: "São Paulo, Brazil", confirmed: true, url: "https://www.isca-speech.org/" },
   { name: "IROS 2027", cat: "robotics", due: "2027-03-01", conf: "2027-09-26",
@@ -152,11 +154,11 @@ var VENUES = [
     where: "Honolulu, HI, USA", confirmed: false, url: "https://recsys.acm.org/" },
   { name: "NeurIPS 2027", cat: "ml", due: "2027-05-15", conf: "2027-12-01",
     where: "Europe, TBA", confirmed: false, url: "https://neurips.cc/" },
-  { name: "CoRL 2027", cat: "robotics", due: "2027-05-28", conf: "2027-11-01",
+  { name: "CoRL 2027", cat: "robotics", due: "2027-05-28", conf: null,
     where: "TBA", confirmed: false, url: "https://www.corl.org/" },
-  { name: "3DV 2028", cat: "vision", due: "2027-08-27", conf: "2028-04-01",
+  { name: "3DV 2028", cat: "vision", due: "2027-08-27", conf: null,
     where: "TBA", confirmed: false, url: "https://3dvconf.github.io/" },
-  { name: "ECCV 2028", cat: "vision", due: "2028-03-06", conf: "2028-09-01",
+  { name: "ECCV 2028", cat: "vision", due: "2028-03-06", conf: null,
     where: "TBA · biennial", confirmed: false, url: "https://eccv.ecva.net/" },
 
   // ---------- conference announced, deadline not yet set ----------
@@ -177,7 +179,7 @@ var VENUES = [
     url: "https://wacv.thecvf.com/Conferences/2027/Dates" },
   { name: "3DV 2027", cat: "vision", due: "2026-08-28", conf: "2027-04-06",
     where: "Thessaloniki, Greece", confirmed: true, url: "https://3dvconf.github.io/2027/" },
-  { name: "ICRA 2027", cat: "robotics", due: "2026-09-15", conf: "2027-06-01",
+  { name: "ICRA 2027", cat: "robotics", due: "2026-09-15", conf: null,
     where: "TBA", confirmed: true,
     url: "https://www.ieee-ras.org/conferences-workshops/fully-sponsored/icra" },
   { name: "ICLR 2027", cat: "ml", due: "2026-09-25", conf: "2027-04-26",
@@ -235,7 +237,7 @@ function card(v) {
       flag +
     '</div>' +
     '<p class="conf-dates"><b>Deadline</b> ' + (v.due === null ? "not announced" : fmt(v.due)) + '</p>' +
-    '<p class="conf-dates">' + fmtMonth(v.conf) + ' · ' + v.where + '</p>' +
+    '<p class="conf-dates">' + (v.conf === null ? "Dates TBA" : fmtMonth(v.conf)) + ' · ' + v.where + '</p>' +
     '<span class="countdown ' + c.cls + '">' + c.text + '</span>' +
     '</article>';
 }
@@ -246,7 +248,11 @@ function render() {
   var dated = pool.filter(function (v) { return v.due !== null && daysUntil(v.due) >= 0; })
                   .sort(function (a, b) { return parseDay(a.due) - parseDay(b.due); });
   var tba   = pool.filter(function (v) { return v.due === null; })
-                  .sort(function (a, b) { return parseDay(a.conf) - parseDay(b.conf); });
+                  .sort(function (a, b) {
+                    if (a.conf === null) return 1;
+                    if (b.conf === null) return -1;
+                    return parseDay(a.conf) - parseDay(b.conf);
+                  });
   var closed = pool.filter(function (v) { return v.due !== null && daysUntil(v.due) < 0; })
                    .sort(function (a, b) { return parseDay(b.due) - parseDay(a.due); });
 
