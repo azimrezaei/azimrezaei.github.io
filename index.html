@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Azim Rezaei — 3D Scene Understanding and Efficient Multi-Modal Learning</title>
+<meta name="description" content="Azim (Abdolazim) Rezaei is a Ph.D. candidate in Computer Science at Texas A&amp;M University–Corpus Christi working on 3D object detection, 3D scene reconstruction from 2D images, and parameter-efficient multi-modal learning. Open to academic positions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="style.css">
+<script>(function(){try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="wordmark" href="index.html">Azim Rezaei<span>Computer Science · TAMU–CC</span></a>
+    <nav>
+      <ul>
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="teaching.html">Teaching</a></li>
+        <li><a href="conferences.html">Top AI Venues</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><button class="theme-btn" id="themeBtn" type="button">Dark</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <img class="portrait" src="images/azim-rezaei.webp" alt="Portrait of Azim Rezaei">
+      <div class="sidecard">
+        <div><b>Position</b>Ph.D. Candidate, Computer Science</div>
+        <div><b>Institution</b>Texas A&amp;M University–Corpus Christi</div>
+        <div><b>Advisor</b>Dr. Mehdi Sookhak</div>
+        <div><b>Email</b><a href="mailto:arezaei@islander.tamucc.edu">arezaei@islander.tamucc.edu</a></div>
+        <div><b>Office</b>Corpus Christi, Texas</div>
+      </div>
+    </div>
+
+    <div>
+      <p class="availability">Open to academic positions</p>
+      <h1>Azim Rezaei</h1>
+      <p class="title-line">3D object detection · 3D scene generation from 2D · Parameter-efficient multi-modal learning</p>
+
+      <p class="lede">I work on giving machines a usable three-dimensional understanding of the world from the cheapest sensing available, ordinary cameras, by distilling the geometry that expensive sensors measure during training into models that need only images at deployment.</p>
+
+      <p>My dissertation pursues one claim across three settings: <strong>geometry measured at training time can be transferred into a model that never sees that sensor again</strong>. A LiDAR rig, a calibrated multi-sensor vehicle, or a fully instrumented test track are available in the lab and absent on the road. Treating that asymmetry as a supervision opportunity rather than a deployment constraint is what lets 3D detection and 3D scene reconstruction run on hardware a city or a mid-size fleet can actually afford.</p>
+
+      <p>This work has appeared at <strong>AAAI-26</strong>, <strong>IEEE VTC2026-Fall</strong>, <em>IEEE Transactions on Big Data</em> and <strong>IEEE CogMI 2025</strong> (Best Conference Paper candidate), and is supported by <strong>NSF</strong> and <strong>USDOT</strong> grants. I write and contribute to research proposals, and I review for <strong>NeurIPS</strong>, <strong>ICML</strong> and <em>IEEE Transactions on Neural Networks and Learning Systems</em>.</p>
+
+      <div class="btns">
+        <a class="btn primary" href="research.html">Research statement</a>
+        <a class="btn" href="publications.html">Publications</a>
+        <a class="btn" href="files/Azim_Rezaei_CV.pdf">Curriculum vitae (PDF)</a>
+        <a class="btn" href="https://scholar.google.com/citations?user=DW1fpjkAAAAJ&amp;hl=en">Google Scholar</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="agenda">
+  <div class="wrap">
+    <div class="section-head">
+      <h2><span class="num">01</span>Research agenda</h2>
+      <p>Three interlocking thrusts, each with published results and a clear five-year extension. The full statement, including funding directions and the lab I intend to build, is on the <a href="research.html">research page</a>.</p>
+    </div>
+
+    <div class="thrusts">
+      <article class="thrust">
+        <span class="tag">Thrust I</span>
+        <h3>3D scene reconstruction from 2D</h3>
+        <p>Reconstructing a metric, renderable 3D scene from ordinary images. I use synchronized LiDAR only during training, aligning the geometric relationships an image model learns with those a multimodal model measures, so that at inference the system needs nothing but calibrated RGB.</p>
+        <p class="evidence">Geometric attention distillation · Gaussian scene decoding · Ongoing, under review</p>
+      </article>
+
+      <article class="thrust">
+        <span class="tag">Thrust II</span>
+        <h3>Robust 3D object detection</h3>
+        <p>Deployed perception stacks lose sensors, meet weather they never trained on, and cannot afford full fine-tuning. I combine low-rank adaptation with deep metric learning so that LiDAR, radar, camera, IMU and GNSS share a latent space that degrades gracefully under dropout.</p>
+        <p class="evidence">PEFT-DML (AAAI-26) · QDML (under review) · PEHT (IEEE VTC2026-Fall)</p>
+      </article>
+
+      <article class="thrust">
+        <span class="tag">Thrust III</span>
+        <h3>Agentic systems for infrastructure</h3>
+        <p>Chain-of-thought agents serialize work that traffic operators do in parallel. Restructuring an LLM agent system as a directed acyclic graph cut token consumption by half and let independent subtasks run concurrently, though graph overhead costs more than it saves on the simplest queries.</p>
+        <p class="evidence">GraphTrafficGPT (arXiv:2507.13511) · 50.2% fewer tokens, 19.0% lower latency</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="selected">
+  <div class="wrap">
+    <div class="section-head">
+      <h2><span class="num">02</span>Selected publications</h2>
+      <p>The <a href="publications.html">complete list</a> includes abstracts, venues and preprints; citations are also tracked on <a href="https://scholar.google.com/citations?user=DW1fpjkAAAAJ&amp;hl=en">Google Scholar</a>.</p>
+    </div>
+
+    <ul class="pub-list">
+      <li class="pub">
+        <div class="pub-year"><span class="status-year">In review</span></div>
+        <div class="pub-body">
+          <h3>Robust Multi-Modal 3D Perception under Sensor Dropout via Quantization-Aware Parameter-Efficient Deep Metric Learning (QDML)</h3>
+          <p class="authors"><span class="me">A. Rezaei</span>, M. Sookhak</p>
+          <p class="venue">Under review at a major computer vision conference, 2027</p>
+          <div class="pub-links">
+            <span class="chip status">Under review</span>
+          </div>
+        </div>
+      </li>
+
+      <li class="pub">
+        <div class="pub-year">2026</div>
+        <div class="pub-body">
+          <h3>PEFT-DML: Parameter-Efficient Fine-Tuning Deep Metric Learning for Robust Multi-Modal 3D Object Detection in Autonomous Driving</h3>
+          <p class="authors"><span class="me">A. Rezaei</span>, M. Sookhak</p>
+          <p class="venue">The 40th AAAI Conference on Artificial Intelligence (AAAI-26)</p>
+          <div class="pub-links">
+            <span class="chip badge">Top 11% · 3-Minute Presentation Contest</span>
+          </div>
+        </div>
+      </li>
+
+      <li class="pub">
+        <div class="pub-year">2026</div>
+        <div class="pub-body">
+          <h3>Parameter-Efficient Hybrid Transformer (PEHT) for Network Traffic Prediction via Dynamic Urban Congestion Integration</h3>
+          <p class="authors"><span class="me">A. Rezaei</span>, M. Sookhak</p>
+          <p class="venue">IEEE 104th Vehicular Technology Conference (VTC2026-Fall)</p>
+        </div>
+      </li>
+
+      <li class="pub">
+        <div class="pub-year"><span class="status-year">In review</span></div>
+        <div class="pub-body">
+          <h3>Adaptive Prompt Learning for Privacy-Preserving via Vision-Language Models</h3>
+          <p class="authors"><span class="me">A. Rezaei</span>, M. Haghparast, A. Patooghy, M. Sookhak</p>
+          <p class="venue">IEEE Transactions on Big Data (under revision)</p>
+          <div class="pub-links">
+            <span class="chip status">Under revision</span>
+          </div>
+        </div>
+      </li>
+
+      <li class="pub">
+        <div class="pub-year">2025</div>
+        <div class="pub-body">
+          <h3>RL-MoE: An Image-Based Privacy-Preserving Approach in Intelligent Transportation Systems</h3>
+          <p class="authors"><span class="me">A. Rezaei</span>, M. Sookhak, M. Haghparast</p>
+          <p class="venue">IEEE Transactions on Big Data</p>
+          <div class="pub-links">
+            <span class="chip badge">Best Conference Paper candidate · IEEE CogMI 2025</span>
+          </div>
+        </div>
+      </li>
+
+      <li class="pub">
+        <div class="pub-year">2025</div>
+        <div class="pub-body">
+          <h3>GraphTrafficGPT: Enhancing Traffic Management through Graph-Based AI Agent Coordination</h3>
+          <p class="authors">N. A. F. Taleb, <span class="me">A. Rezaei</span>, R. A. Patel, M. Sookhak</p>
+          <p class="venue">arXiv:2507.13511</p>
+          <div class="pub-links">
+            <a class="chip" href="https://arxiv.org/abs/2507.13511">arXiv</a>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+</section>
+
+<section id="news">
+  <div class="wrap cols">
+    <div>
+      <div class="section-head">
+        <h2><span class="num">03</span>News</h2>
+      </div>
+      <ul class="plain">
+        <li><b>Spring 2026</b> — Awarded the College of Engineering Graduate Scholarship and the Geospatial Surveying Engineering Scholarship.</li>
+        <li><b>2026</b> — PEFT-DML accepted at AAAI-26; selected among the top 11% of papers and invited to the Three-Minute Presentation Contest.</li>
+        <li><b>2026</b> — PEHT accepted at IEEE VTC2026-Fall.</li>
+        <li><b>2025</b> — RL-MoE named a Best Conference Paper candidate at the 7th IEEE International Conference on Cognitive Machine Intelligence.</li>
+        <li><b>2022–2026</b> — SAGE Fellowship awarded four consecutive years.</li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="section-head">
+        <h2><span class="num">04</span>Background</h2>
+      </div>
+      <ul class="plain">
+        <li><b>Ph.D., Computer Science</b> — Texas A&amp;M University–Corpus Christi, Aug 2022 – present. GPA 3.9.</li>
+        <li><b>M.Sc., Software Engineering</b> — University of Malaya, Kuala Lumpur, 2013.</li>
+        <li><b>B.Sc., Computer Engineering</b> — Islamic Azad University, Kerman, 2008.</li>
+        <li><b>Lecturer &amp; Researcher</b> — University of Applied Sciences, Tehran, 2014–2016. Artificial intelligence, algorithms, software engineering.</li>
+        <li><b>Reviewer</b> — NeurIPS, ICML, and <em>IEEE Transactions on Neural Networks and Learning Systems</em>.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap narrow">
+    <div class="section-head">
+      <h2><span class="num">05</span>Contact</h2>
+      <p>I am applying for tenure-track assistant professor positions beginning Fall 2027, and I am glad to talk with search committees, prospective collaborators and students interested in 3D perception and multi-modal learning.</p>
+    </div>
+    <div class="btns" style="margin-top:0">
+      <a class="btn primary" href="mailto:arezaei@islander.tamucc.edu">arezaei@islander.tamucc.edu</a>
+      <a class="btn" href="https://www.linkedin.com/in/azimrez/">LinkedIn</a>
+      <a class="btn" href="https://github.com/azim015">GitHub</a>
+      <a class="btn" href="https://scholar.google.com/citations?user=DW1fpjkAAAAJ&amp;hl=en">Google Scholar</a>
+      <a class="btn" href="cv.html#references">References</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="y"></span> Azim Rezaei</span>
+    <span>Department of Computer Science, Texas A&amp;M University–Corpus Christi</span>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>

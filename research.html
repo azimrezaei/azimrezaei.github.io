@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Research — Azim Rezaei</title>
+<meta name="description" content="Research statement and five-year agenda: 3D scene reconstruction from 2D images, robust multi-modal 3D object detection, and agentic LLM systems for infrastructure.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="style.css">
+<script>(function(){try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="wordmark" href="index.html">Azim Rezaei<span>Computer Science · TAMU–CC</span></a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html" aria-current="page">Research</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="teaching.html">Teaching</a></li>
+        <li><a href="conferences.html">Top AI Venues</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><button class="theme-btn" id="themeBtn" type="button">Dark</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap narrow">
+    <p class="eyebrow">Research statement</p>
+    <h1>Three-dimensional understanding from two-dimensional sensing</h1>
+    <p class="lede">Reconstructing and detecting in 3D using the sensors a deployment can actually afford, by distilling at training time the geometry it will never measure again.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap narrow prose">
+    <p class="first">Every serious 3D perception system is trained in conditions it will never be deployed in. The research vehicle carries a calibrated LiDAR rig, synchronized multi-camera arrays, IMU and GNSS. The production vehicle, the roadside unit and the municipal survey drone carry cameras, and little else. I treat that asymmetry as the central design opportunity rather than as a constraint.</p>
+
+    <p>My work pursues one claim across three settings: <strong>geometry measured by a sensor at training time can be transferred into a model that never sees that sensor again</strong>. If a LiDAR sweep can teach an image model what metric depth and surface structure look like, not as a label to regress but as a relational structure to imitate, then the expensive sensor becomes a teacher rather than a dependency. The same logic extends to detection under sensor dropout, and to the systems that put 3D understanding in front of the people who operate infrastructure.</p>
+
+    <h3>Thrust I · 3D scene reconstruction and generation from 2D images</h3>
+
+    <p>Reconstructing a scene in 3D from photographs supports mapping, simulation, and scene understanding, and recent learned geometry models have made image-only inference plausible. But plausibility is not the standard that matters. In driving and infrastructure settings, a visually convincing reconstruction that hallucinates an unseen obstacle is worse than no reconstruction at all, and existing methods blur the line between surface that was <em>observed</em> and surface that was <em>inferred from priors</em>. Many approaches labelled image-only still depend on range data somewhere in the pipeline: at training, at scene construction, or at rendering.</p>
+
+    <p>My current work takes a strict position on that line. The framework uses synchronized RGB and LiDAR observations <em>only</em> during training, and reconstructs a 3D scene from RGB images alone at inference. A multimodal training branch learns geometric relationships from calibrated image–LiDAR correspondences; an image reconstruction branch learns to reproduce those relationships and to predict metric depth, confidence, and appearance. Its predicted geometry is lifted into a sparse 3D scaffold and decoded into a renderable Gaussian scene.</p>
+
+    <p>Two technical commitments distinguish it. First, supervision operates on <strong>attention structure</strong>, not only on depth values: point-to-patch attention fuses each image patch with its variable set of projected LiDAR returns, and a confidence-weighted divergence aligns the image branch's patch relationships with the multimodal branch's. The image model learns the relational geometry of the scene, not just a per-pixel number. Second, <strong>measured and inferred geometry stay distinguishable</strong> throughout. Validity masks mark missing returns rather than treating them as zero depth, confidence is trained against a proper objective so uncertainty cannot be suppressed to avoid difficult samples, and unobserved regions are never treated as empty space. Occupancy, surface reconstruction and scene generation are reported against separate measures of success, since conflating them makes a system look more capable than it is.</p>
+
+    <h4>Where this goes next</h4>
+    <ul>
+      <li><strong>Generative completion with provenance.</strong> Extending reconstruction to generation, meaning plausible structure beyond the observed viewpoint, while keeping an explicit record of which surfaces are supported by observation. Generation without that record is unusable for safety-critical simulation.</li>
+      <li><strong>Temporal and dynamic scenes.</strong> Moving from single-pass reconstruction to 4D, where ego-motion must itself be estimated visually and independently moving objects need separate treatment.</li>
+      <li><strong>Distillation from other teachers.</strong> The attention-alignment mechanism is not specific to LiDAR. Radar, structured light, and survey-grade photogrammetry are all candidate training-time teachers for image-only students.</li>
+      <li><strong>Scale and metric fidelity in the wild.</strong> Pushing beyond curated driving benchmarks to general image collections, where camera overlap is limited and distant structure dominates the error.</li>
+    </ul>
+
+    <h3>Thrust II · Robust and efficient multi-modal 3D object detection</h3>
+
+    <p>Detection faces the deployment gap from the other side. A perception stack in the field loses sensors, meets weather it never trained on, and encounters modality–class combinations absent from the training set, while full fine-tuning of large multi-modal models remains out of reach for the municipal and mid-size operators who most need them.</p>
+
+    <p><strong>PEFT-DML</strong> (AAAI-26) addresses both at once. Rather than assuming fixed sensor availability, it maps LiDAR, radar, camera, IMU and GNSS into a shared latent space via deep metric learning, so that detection degrades gracefully under sensor dropout and generalizes to unseen modality–class pairs. Low-Rank Adaptation and adapter layers cut trainable parameters sharply while improving robustness to fast motion, weather variability and domain shift. On nuScenes this yields accuracy gains alongside the efficiency gains, rather than trading one for the other.</p>
+
+    <p><strong>QDML</strong>, currently under review, pushes this toward hardware that municipalities and mid-size fleets actually run. It adds geometry-preserving quantization-aware training, so that the discriminative structure of the shared embedding survives INT8 compression rather than being distorted by it, and it handles arbitrary sensor dropout by letting the remaining modalities compensate during adaptive fusion. Evaluated on both nuScenes and KITTI, it improves robustness under dropout while training substantially fewer parameters. Efficient adaptation and low-precision deployment are usually studied separately; treating them as one problem is what makes the combination hold up.</p>
+
+    <p>The same principle transfers beyond detection. <strong>PEHT</strong> (IEEE VTC2026-Fall) separates primary network communication features from secondary urban-congestion features and applies LoRA inside a Transformer encoder, with a multi-modal fusion strategy injecting external traffic signals at the decoder. On the Telecom Italia Milan dataset and on synthetic congestion scenarios it outperforms state-of-the-art baselines on RMSE, MAE and R².</p>
+
+    <h4>Where this goes next</h4>
+    <ul>
+      <li><strong>Certified degradation.</strong> Guarantees on how much accuracy a multi-modal detector can lose when a named sensor drops out, so that safety cases can be written against it.</li>
+      <li><strong>Joint quantization and adaptation.</strong> QDML combines low-precision training with parameter-efficient adaptation; the next step is to search precision and rank as a single space rather than composing two separately tuned compression steps.</li>
+      <li><strong>Continual adaptation in the field.</strong> Adapters that update as a deployment drifts across new intersections, new seasons and new sensor hardware, without catastrophic forgetting and without a return trip to a GPU cluster.</li>
+      <li><strong>Detection on reconstructed scenes.</strong> Closing the loop with Thrust I: running detection directly on image-derived 3D scaffolds, where the representation and the task are trained together.</li>
+    </ul>
+
+    <h3>Thrust III · Agentic systems for infrastructure operations</h3>
+
+    <p>Traffic management centers are inherently parallel environments: operators watch congestion, signal timing and incident response at once. LLM-based systems built on chain-of-thought prompting are inherently serial. They process tasks in sequence, reload full context at each step, and handle a single query at a time. The architecture contradicts the work.</p>
+
+    <p><strong>GraphTrafficGPT</strong> (arXiv:2507.13511) restructures the system as a directed acyclic graph: tasks become nodes, dependencies become edges, and independent tasks execute concurrently. A central Brain Agent decomposes queries, analyzes dependencies and dispatches to six specialized agents covering data retrieval, traffic analysis, visualization, SUMO-based simulation, workflow optimization and general queries. Only the information a downstream task requires is propagated, rather than the full context, which appears to account for most of the observed gains. Against the original TrafficGPT, token consumption fell 50.2%, average response latency improved 19.0%, and simultaneous multi-query execution gained up to 23.0%. Simple visualization tasks got <em>worse</em> by 36–40%, because graph construction overhead exceeds the parallelization benefit.</p>
+
+    <h4>Where this goes next</h4>
+    <ul>
+      <li><strong>Adaptive orchestration.</strong> Deciding per query whether graph decomposition is worth its overhead. The negative result above is a learnable signal, not just a caveat.</li>
+      <li><strong>Grounding agents in 3D scene state.</strong> Giving the agent layer direct access to reconstructed scene geometry from Thrust I, so that a query about an intersection resolves against a spatial model rather than tabular summaries.</li>
+      <li><strong>Verifiable multi-agent execution.</strong> Checking that a dispatched plan actually satisfies the operator's intent before it touches signal timing or incident response.</li>
+    </ul>
+
+    <h3>What ties the three together</h3>
+
+    <p>Each thrust feeds the others. Image-only reconstruction (I) is only deployable with the parameter-efficient methods of (II), and detection becomes substantially easier when it runs on a scene representation built for it. Agentic systems (III) are the layer that makes 3D understanding usable by an operator who is not a machine learning engineer, and reconstructed geometry is what those agents should be reasoning over. All three are evaluated against the same standard: not benchmark leaderboards alone, but whether a municipal department or a mid-size fleet could run the result on the hardware and budget it actually has.</p>
+
+    <h3>Funding and grant writing</h3>
+
+    <p>My research has been carried out on funded projects. Work in this program is supported by the <strong>National Science Foundation</strong> under grants CNS-2543209 and CNS-2318725, and by the <strong>U.S. Department of Transportation</strong> Tier-1 University Transportation Center CYBER-CARE, the Transportation Cybersecurity Center for Advanced Research and Education, under grant 69A3552348332.</p>
+
+    <p>Proposal writing has been part of my assistantship from the beginning: developing research ideas into fundable problem statements, drafting technical narratives, and preparing budgets and justifications alongside my advisor. Reviewing for <strong>NeurIPS</strong>, <strong>ICML</strong> and <em>IEEE Transactions on Neural Networks and Learning Systems</em> has taught me how a technical argument reads to a skeptical evaluator. I intend to be writing my own proposals from the first year.</p>
+
+    <p>The agenda above maps onto several active programs. The 3D reconstruction work fits NSF <strong>IIS</strong> (Robust Intelligence) and <strong>CNS</strong>, and the deployment framing fits <strong>CPS</strong> for cyber-physical transportation systems. The detection and efficiency work aligns with <strong>USDOT</strong> and university transportation center programs, and with industry partnership in automotive perception and smart-city infrastructure. The image-only reconstruction thrust in particular is well positioned for an <strong>NSF CAREER</strong> proposal, joining a sharp technical question, namely what can be recovered in 3D from cameras alone and how we establish what was observed rather than inferred, to an education plan on building and evaluating perception systems rigorously.</p>
+
+    <h3>The lab I want to build</h3>
+
+    <p>I want a group with a research pipeline for students at every level, and projects scoped so that a newcomer can own a measurable piece of a real system within two semesters: a calibration and synchronization harness, a reconstruction evaluation suite that separates observed from inferred surface, a SUMO scenario, an adapter sweep. I care about students publishing early and presenting their own work, and about them learning to report a regression as carefully as an improvement.</p>
+
+    <p>Having spent six years in industry before returning to research, I also intend to keep a standing relationship with deployment partners. The problems I find most worth solving are the ones that surface only when a model meets infrastructure it does not control.</p>
+
+    <p>The complete publication record appears on the <a href="publications.html">publications page</a>.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="y"></span> Azim Rezaei</span>
+    <span>Department of Computer Science, Texas A&amp;M University–Corpus Christi</span>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>
