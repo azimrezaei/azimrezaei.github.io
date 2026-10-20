@@ -16,6 +16,8 @@
   --good-soft:    #e3f0e8;
   --warn:         #8a5a12;
   --warn-soft:    #f6ecd9;
+  --info:         #1d4e79;
+  --info-soft:    #e4edf5;
   --muted-soft:   #efece6;
   --max:          1120px;
   --serif:  "Source Serif 4", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
@@ -38,6 +40,8 @@
     --good-soft:   #16271e;
     --warn:        #d9b276;
     --warn-soft:   #2a2318;
+    --info:        #8fb8d8;
+    --info-soft:   #18232c;
     --muted-soft:  #212830;
   }
 }
@@ -57,6 +61,8 @@
   --good-soft:   #16271e;
   --warn:        #d9b276;
   --warn-soft:   #2a2318;
+  --info:        #8fb8d8;
+  --info-soft:   #18232c;
   --muted-soft:  #212830;
 }
 
@@ -242,12 +248,15 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
   content: ""; width: 6px; height: 6px; border-radius: 50%;
   background: var(--warn); flex: none;
 }
+.chip.status.revision { background: var(--info-soft); color: var(--info); }
+.chip.status.revision::before { background: var(--info); }
 
 /* Same signal in the left-hand year column. */
 .pub-year .status-year {
   display: inline-block; background: var(--warn-soft); color: var(--warn);
   font-weight: 600; border-radius: 3px; padding: 3px 8px; letter-spacing: .04em;
 }
+.pub-year .status-year.revision { background: var(--info-soft); color: var(--info); }
 
 /* ---------- availability pill ---------- */
 .availability {
