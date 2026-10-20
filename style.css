@@ -206,6 +206,23 @@ h2 .num {
 .authors .me { color: var(--ink); font-weight: 600; border-bottom: 1.5px solid var(--accent); }
 .venue { font-family: var(--sans); font-size: .86rem; color: var(--ink-3); margin: 0; font-style: italic; }
 .abstract { font-size: .97rem; color: var(--ink-2); margin: 12px 0 0; }
+
+/* Abstracts collapse to two lines until the reader asks for the rest. */
+.abstract.clamped {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.read-more {
+  font-family: var(--sans); font-size: .78rem; font-weight: 500;
+  background: none; border: 0; padding: 0; margin: 7px 0 0;
+  cursor: pointer; color: var(--accent);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  display: inline-block; line-height: 1.4;
+}
+.read-more:hover { border-bottom-color: var(--accent); }
 .pub-links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 13px; }
 .chip {
   font-family: var(--sans); font-size: .74rem; font-weight: 500; letter-spacing: .03em;

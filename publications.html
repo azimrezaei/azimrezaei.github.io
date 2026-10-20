@@ -102,12 +102,13 @@
       <li class="pub">
         <div class="pub-year">AAAI-26</div>
         <div class="pub-body">
-          <h3>PEFT-DML: Parameter-Efficient Fine-Tuning Deep Metric Learning for Robust Multi-Modal 3D Object Detection in Autonomous Driving</h3>
+          <h3><a href="https://ojs.aaai.org/index.php/AAAI/article/view/42270">PEFT-DML: Parameter-Efficient Fine-Tuning Deep Metric Learning for Robust Multi-Modal 3D Object Detection in Autonomous Driving</a></h3>
           <p class="authors"><span class="me">Abdolazim Rezaei</span>, Mehdi Sookhak</p>
           <p class="venue">The 40th Annual AAAI Conference on Artificial Intelligence, 2026</p>
           <p class="abstract">PEFT-DML is a parameter-efficient deep metric learning framework for robust multi-modal 3D object detection. Unlike conventional models that assume fixed sensor availability, it maps diverse modalities — LiDAR, radar, camera, IMU and GNSS — into a shared latent space, enabling reliable detection under sensor dropout and for unseen modality–class combinations. Integrating Low-Rank Adaptation (LoRA) and adapter layers delivers substantial training efficiency while improving robustness to fast motion, weather variability and domain shift. Experiments on nuScenes demonstrate superior accuracy.</p>
           <div class="pub-links">
             <span class="chip badge">Top 11% · invited to the AAAI-26 Three-Minute Presentation Contest</span>
+            <a class="chip" href="https://ojs.aaai.org/index.php/AAAI/article/view/42270">AAAI Proceedings</a>
           </div>
         </div>
       </li>
@@ -115,7 +116,7 @@
       <li class="pub">
         <div class="pub-year">VTC2026</div>
         <div class="pub-body">
-          <h3>Parameter-Efficient Hybrid Transformer (PEHT) for Network Traffic Prediction via Dynamic Urban Congestion Integration</h3>
+          <h3><a href="https://arxiv.org/abs/2606.28274">Parameter-Efficient Hybrid Transformer (PEHT) for Network Traffic Prediction via Dynamic Urban Congestion Integration</a></h3>
           <p class="authors"><span class="me">Abdolazim Rezaei</span>, Mehdi Sookhak, Mahboobeh Haghparast</p>
           <p class="venue">IEEE 104th Vehicular Technology Conference (VTC2026-Fall), 2026</p>
           <p class="abstract">Accurate network traffic prediction underpins resource allocation in dense urban cellular environments, but city dynamics make it hard. PEHT separates primary network communication features from secondary city-traffic features and applies Low-Rank Adaptation within the Transformer encoder, sharply reducing trainable parameters while maintaining predictive accuracy. A multi-modal fusion strategy injects external traffic features at the decoder. Experiments on the Telecom Italia Milan dataset and multiple synthetic congestion scenarios show PEHT outperforming state-of-the-art models on RMSE, MAE and R².</p>
@@ -128,7 +129,7 @@
       <li class="pub">
         <div class="pub-year">VTC2026</div>
         <div class="pub-body">
-          <h3>MINT-V2X: A Mobility-Integrated Network Trajectory Dataset for Predictive Resource Management</h3>
+          <h3><a href="https://arxiv.org/abs/2607.22654">MINT-V2X: A Mobility-Integrated Network Trajectory Dataset for Predictive Resource Management</a></h3>
           <p class="authors">Abdullah Anjum, <span class="me">Abdolazim Rezaei</span>, Mehdi Sookhak</p>
           <p class="venue">IEEE 104th Vehicular Technology Conference (VTC2026-Fall), 2026</p>
           <p class="abstract">V2X research needs datasets that pair vehicle trajectories with realistic wireless network parameters, but public datasets almost always provide one or the other rather than an integrated view. MINT-V2X closes that gap by coupling SUMO traffic dynamics with OMNeT++/Simu5G network simulation, validated through 14 standardized tests drawn from 3GPP Release 14 (C-V2X), ETSI standards and Shannon capacity theory. The release contains 9.87 million synchronized data points from 1,386 vehicles and 15 roadside units across three hours of urban traffic simulation, with strong network-metric correlations (CQI–SINR 0.993, SINR–PDR 0.946). An RSU load-prediction case study shows that trajectory data yields better predictive performance than network-history-only baselines. The dataset, experiments and full SUMO configurations are released publicly.</p>
@@ -152,7 +153,7 @@
       <li class="pub">
         <div class="pub-year">CogMI</div>
         <div class="pub-body">
-          <h3>RL-MoE: An Image-Based Privacy Preserving Approach In Intelligent Transportation System</h3>
+          <h3><a href="https://ieeexplore.ieee.org/abstract/document/11417039">RL-MoE: An Image-Based Privacy Preserving Approach In Intelligent Transportation System</a></h3>
           <p class="authors"><span class="me">Abdolazim Rezaei</span>, Mehdi Sookhak, Mahboobeh Haghparast</p>
           <p class="venue">2025 IEEE 7th International Conference on Cognitive Machine Intelligence (CogMI), pp. 93–102</p>
           <p class="abstract">Vehicular computing enables real-time data collection for traffic flow, mobility and safety, but the proliferation of roadside cameras and IoT devices raises serious privacy concerns. RL-MoE combines Reinforcement Learning with a Mixture of Experts model: instead of transmitting raw images, it extracts textual descriptions from camera feeds. The MoE component uses specialized experts to generate summaries from structured prompts while the RL module optimizes those descriptions for accuracy and relevance, with explainability methods included for transparency. Results show effective privacy protection, improved transmission efficiency and support for compliance with privacy standards.</p>
@@ -166,7 +167,7 @@
       <li class="pub">
         <div class="pub-year">arXiv</div>
         <div class="pub-body">
-          <h3>GraphTrafficGPT: Enhancing Traffic Management through Graph-Based AI Agent Coordination</h3>
+          <h3><a href="https://arxiv.org/abs/2507.13511">GraphTrafficGPT: Enhancing Traffic Management through Graph-Based AI Agent Coordination</a></h3>
           <p class="authors">Nabil Abdelaziz Ferhat Taleb, <span class="me">Abdolazim Rezaei</span>, Raj Atulkumar Patel, Mehdi Sookhak</p>
           <p class="venue">arXiv preprint arXiv:2507.13511, 2025</p>
           <p class="abstract">LLM-based traffic management systems such as TrafficGPT rely on chain-based architectures that process tasks sequentially, reload context at each step and handle one query at a time. GraphTrafficGPT restructures this around a directed acyclic graph: tasks become nodes, dependencies become edges, and independent tasks execute in parallel. A centralized Brain Agent handles query decomposition, dependency analysis and agent coordination, dispatching to six specialized agents covering data retrieval, traffic analysis, visualization, SUMO-based simulation, workflow optimization and general queries. Against the original TrafficGPT, the architecture reduced token consumption by 50.2%, improved average response latency by 19.0%, and supported simultaneous multi-query execution with efficiency gains up to 23.0%, though simple visualization tasks, where graph-construction overhead exceeds the parallelization benefit, saw latency increases of 36–40%.</p>
@@ -179,7 +180,7 @@
       <li class="pub">
         <div class="pub-year">arXiv</div>
         <div class="pub-body">
-          <h3>Privacy-Preserving in Connected and Autonomous Vehicles Through Vision-to-Text Transformation</h3>
+          <h3><a href="https://arxiv.org/abs/2506.15854">Privacy-Preserving in Connected and Autonomous Vehicles Through Vision-to-Text Transformation</a></h3>
           <p class="authors"><span class="me">Abdolazim Rezaei</span>, Mehdi Sookhak, Ahmad Patooghy, Shahab S. Band, Amir Mosavi</p>
           <p class="venue">arXiv preprint arXiv:2506.15854, 2025</p>
           <p class="abstract">Connected and autonomous vehicles depend on devices that process privacy-sensitive data, particularly AI-equipped roadside cameras used for applications such as violation detection. Face blurring and obfuscation leave individuals trackable through other features such as clothing. This paper introduces a privacy-preserving framework using feedback-based reinforcement learning and vision-language models to convert images into semantically equivalent textual descriptions, retaining scene-relevant information while preserving visual privacy. A hierarchical RL strategy iteratively refines the generated text for semantic accuracy and privacy. Evaluation shows Unique Word Count increasing by approximately 77% and Detail Density by around 50% relative to existing approaches.</p>
@@ -202,7 +203,7 @@
       <li class="pub">
         <div class="pub-year">2024</div>
         <div class="pub-body">
-          <h3>Credit Card Fraud Detection Using Tree-Based Algorithms for Highly Imbalanced Data</h3>
+          <h3><a href="https://ieeexplore.ieee.org/abstract/document/10586088">Credit Card Fraud Detection Using Tree-Based Algorithms for Highly Imbalanced Data</a></h3>
           <p class="authors"><span class="me">Abdolazim Rezaei</span>, Mohsen Yazdinejad, Mehdi Sookhak</p>
           <p class="venue">2024 IEEE 3rd International Conference on Computing and Machine Intelligence (ICMI), pp. 1–6</p>
           <p class="abstract">Cybercriminals exploit phishing information and manipulate cardholder account balances to appropriate funds in ways that resist tracing. This study addresses detection of fraudulent banking transactions in account data characterized by highly imbalanced fraud records. Across a range of machine learning algorithms with a focus on tree-based approaches, LightGBM and XGBoost show superior performance, with LightGBM notably dominant, reaching an AUC of 0.94649.</p>
